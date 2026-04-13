@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 // ==========================================================
 const profile = {
   name: "NETASH.KE",
-  role: "Full Stack Developer",
+  role: "FULL PACK NETWORK TECHNICIAN AND DEVELOPER",
   bio: "Specializing in scalable web applications, Data Science, and Cloud Infrastructure. Delivering technical mastery across modern frameworks and automated deployments.",
   buttonText: "Got a project?",
   resumeText: "My Resume",
