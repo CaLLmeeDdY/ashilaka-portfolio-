@@ -1,0 +1,224 @@
+---
+// ==========================================================
+// 🎛️ MASTER CONTROL PANEL
+// Edit your details here. The website will build automatically.
+// ==========================================================
+
+const profile = {
+  name: "Ashilaka",
+  role: "Full Stack Developer",
+  bio: "Specializing in scalable web applications, Data Science, and Cloud Infrastructure. Delivering technical mastery across modern frameworks and automated deployments.",
+  buttonText: "Got a project?",
+  resumeText: "My Resume",
+  resumeLink: "#", // Add your PDF link here later
+  imagePath: "/profile.jpg", // Put this image in the 'public' folder
+  email: "hello@example.com",
+  phone: "+254 700 000 000"
+};
+
+const projects = [
+  {
+    title: "TIA Clinic Showcase",
+    image: "/project1.jpg", 
+    tags: ["Astro", "Tailwind"],
+    description: "An interactive web platform demonstrating modern frontend development practices. Built with lightning-fast architecture.",
+    link: "#"
+  },
+  {
+    title: "WhatsApp Automation",
+    image: "/project2.jpg", 
+    tags: ["Python", "Django"],
+    description: "A comprehensive lead automation platform designed to integrate WhatsApp messaging capabilities with complex sales workflows.",
+    link: "#"
+  },
+  {
+    title: "DataBasedIndex",
+    image: "/project3.jpg", 
+    tags: ["Django", "Celery"],
+    description: "A sophisticated AI-powered SEO content generation and static site deployment tool designed to streamline web creation.",
+    link: "#"
+  }
+];
+
+const experience = [
+  {
+    role: "Lead Full Stack Developer",
+    company: "Agency",
+    date: "Nov 2023 - Present",
+    description: "Spearheaded the architecture of AI-powered web applications, ultimately improving deployment times, system uptime, and overall performance."
+  },
+  {
+    role: "Data Science Intern",
+    company: "Remote",
+    date: "June 2023 - Oct 2023",
+    description: "Applied machine learning models to solve complex datasets, focusing on high-accuracy predictive analytics and health classification."
+  }
+];
+---
+
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{profile.name} | Portfolio</title>
+  </head>
+  <body class="bg-[#0a0f16] text-white font-sans min-h-screen pb-24 selection:bg-[#d9232e] selection:text-white">
+    
+    <nav class="fixed top-0 w-full z-50 bg-[#0a0f16]/90 backdrop-blur-md border-b border-gray-800/50">
+      <div class="flex justify-between items-center py-5 px-8 lg:px-24">
+        <div class="text-xl font-bold tracking-wider uppercase">{profile.name}</div>
+        <div class="hidden md:flex gap-8 text-sm font-semibold text-gray-400 tracking-wide uppercase">
+          <a href="#home" class="hover:text-white transition-colors">Home</a>
+          <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+          <a href="#about" class="hover:text-white transition-colors">About</a>
+          <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <section id="home" class="grid grid-cols-1 lg:grid-cols-2 gap-12 px-8 lg:px-24 min-h-screen items-center pt-20">
+      <div class="space-y-6">
+        <p class="text-gray-400 font-mono tracking-widest uppercase text-sm">System Online</p>
+        <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+          I build digital <br/> masterpieces.
+        </h1>
+        <h2 class="text-3xl font-semibold text-gray-300">{profile.role}</h2>
+        <p class="text-gray-400 max-w-xl leading-relaxed text-lg">
+          {profile.bio}
+        </p>
+        <div class="flex flex-wrap gap-4 pt-4">
+          <a href="#contact" class="bg-[#d9232e] hover:bg-red-700 text-white px-8 py-3 rounded font-bold transition-all shadow-lg shadow-red-900/20">
+            {profile.buttonText}
+          </a>
+          <a href={profile.resumeLink} class="border border-[#d9232e] text-white hover:bg-[#d9232e]/10 px-8 py-3 rounded font-bold transition-all flex items-center">
+            {profile.resumeText}
+          </a>
+        </div>
+      </div>
+
+      <div class="flex justify-center lg:justify-end relative">
+        <div class="w-72 h-72 md:w-96 md:h-96 rounded-full border-2 border-[#d9232e] p-2 relative group">
+          <div class="w-full h-full rounded-full bg-gray-900 flex items-center justify-center overflow-hidden">
+            <img 
+              src={profile.imagePath} 
+              alt={profile.name} 
+              onerror="this.style.display='none'"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+          <div class="absolute inset-0 rounded-full border border-[#d9232e] animate-ping opacity-20"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="px-8 lg:px-24 py-32 bg-[#0d131b] border-y border-gray-800/50">
+      <h2 class="text-4xl font-bold text-center mb-16">Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project) => (
+          <div class="bg-[#111822] border border-gray-800 rounded-xl overflow-hidden group hover:border-gray-500 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-red-900/10 flex flex-col">
+            <div class="h-48 bg-gray-900 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-[#d9232e]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+              <img 
+                src={project.image} 
+                alt={project.title} 
+                onerror="this.style.display='none'"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+              />
+              <span class="absolute text-gray-700 font-mono text-sm -z-10">Image Placeholder</span>
+            </div>
+            <div class="p-8 flex flex-col flex-grow">
+              <h3 class="text-xl font-bold mb-3 group-hover:text-[#d9232e] transition-colors">{project.title}</h3>
+              <div class="flex flex-wrap gap-2 mb-4">
+                {project.tags.map((tag) => (
+                  <span class="px-2 py-1 bg-[#0a0f16] border border-gray-700 text-xs rounded text-gray-300">{tag}</span>
+                ))}
+              </div>
+              <p class="text-gray-400 text-sm mb-8 line-clamp-3 flex-grow">{project.description}</p>
+              <a href={project.link} class="block text-center w-full py-3 border border-[#d9232e] text-[#d9232e] hover:bg-[#d9232e] hover:text-white rounded transition-all font-bold tracking-wide mt-auto">
+                Read Case Study &rarr;
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="about" class="px-8 lg:px-24 py-24 bg-[#0a0f16] border-y border-gray-800/50">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div>
+          <h2 class="text-4xl font-bold mb-8">About Me</h2>
+          <p class="text-gray-400 leading-relaxed mb-8 text-lg">
+            I am a Full Stack Developer and Computer Scientist with a deep passion for building scalable applications and managing robust cloud infrastructure. Over the past few years, I've had the opportunity to solve real-world technical challenges across varied environments.
+          </p>
+          <a href={profile.resumeLink} class="inline-block bg-transparent border border-[#d9232e] text-[#d9232e] hover:bg-[#d9232e] hover:text-white px-8 py-3 rounded font-bold transition-all hover:shadow-[0_0_15px_rgba(217,35,46,0.3)]">
+            Download Detailed CV
+          </a>
+        </div>
+        
+        <div class="space-y-8 mt-4 lg:mt-0">
+          {experience.map((job, index) => (
+            <div class="relative pl-8 border-l border-gray-800">
+              <div class={`absolute w-4 h-4 bg-[#0a0f16] border-2 ${index === 0 ? 'border-[#d9232e]' : 'border-gray-600'} rounded-full -left-[9px] top-1`}></div>
+              <h3 class="text-xl font-bold">{job.role}</h3>
+              <p class={`${index === 0 ? 'text-[#d9232e]' : 'text-gray-500'} text-sm font-mono mb-3 mt-1`}>{job.company} • {job.date}</p>
+              <p class="text-gray-400 text-sm">{job.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="px-8 lg:px-24 py-32 bg-[#0d131b]">
+      <div class="max-w-5xl mx-auto bg-[#111822] border border-gray-800 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-[#d9232e]/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="text-center mb-16 relative z-10">
+          <h2 class="text-4xl font-bold mb-4">Let's work together</h2>
+          <p class="text-gray-400">Open for roles in Full Stack Development, Data Science, and Cloud Engineering.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 relative z-10">
+          <div class="space-y-8">
+            <div class="flex items-start gap-4 text-gray-300 group">
+              <div class="w-12 h-12 rounded bg-gray-900 border border-gray-800 flex items-center justify-center text-[#d9232e] group-hover:bg-[#d9232e] group-hover:text-white transition-colors duration-300">
+                <span class="font-mono text-xl">@</span>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Email</p>
+                <p class="font-mono text-white">{profile.email}</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4 text-gray-300 group">
+              <div class="w-12 h-12 rounded bg-gray-900 border border-gray-800 flex items-center justify-center text-[#d9232e] group-hover:bg-[#d9232e] group-hover:text-white transition-colors duration-300">
+                <span class="font-mono text-xl">#</span>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Phone</p>
+                <p class="font-mono text-white">{profile.phone}</p>
+              </div>
+            </div>
+          </div>
+          
+          <form class="space-y-5">
+            <div>
+              <label class="block text-xs text-gray-500 uppercase tracking-wider mb-2">Your Name</label>
+              <input type="text" placeholder="John Doe" class="w-full bg-[#0a0f16] border border-gray-800 rounded-lg p-3 text-white focus:outline-none focus:border-[#d9232e] focus:ring-1 focus:ring-[#d9232e] transition-all" />
+            </div>
+            <div>
+              <label class="block text-xs text-gray-500 uppercase tracking-wider mb-2">Email Address</label>
+              <input type="email" placeholder="john@example.com" class="w-full bg-[#0a0f16] border border-gray-800 rounded-lg p-3 text-white focus:outline-none focus:border-[#d9232e] focus:ring-1 focus:ring-[#d9232e] transition-all" />
+            </div>
+            <div>
+              <label class="block text-xs text-gray-500 uppercase tracking-wider mb-2">Message</label>
+              <textarea rows="4" placeholder="How can I help you?" class="w-full bg-[#0a0f16] border border-gray-800 rounded-lg p-3 text-white focus:outline-none focus:border-[#d9232e] focus:ring-1 focus:ring-[#d9232e] transition-all"></textarea>
+            </div>
+            <button type="button" class="w-full bg-[#d9232e] hover:bg-red-700 text-white font-bold py-4 rounded-lg transition-transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-red-900/20">
+              Send a message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
