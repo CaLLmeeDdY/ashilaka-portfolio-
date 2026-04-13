@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 // Edit your details here. The website will update automatically.
 // ==========================================================
 const profile = {
-  name: "Ashilaka",
+  name: "NETASH.KE",
   role: "Full Stack Developer",
   bio: "Specializing in scalable web applications, Data Science, and Cloud Infrastructure. Delivering technical mastery across modern frameworks and automated deployments.",
   buttonText: "Got a project?",
