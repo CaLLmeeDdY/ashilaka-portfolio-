@@ -160,13 +160,15 @@ export default function App() {
           </div>
         </div>
 
-        <div className="flex justify-center lg:justify-end relative mt-12 lg:mt-0">
-          <div className="relative group cursor-pointer">
-            {/* The background glow (kept this to make it pop against the Matrix) */}
+        <div className="flex justify-center lg:justify-end relative mt-12 lg:mt-0 w-full">
+          {/* 150% Larger Parent Container */}
+          <div className="relative group cursor-pointer w-full max-w-[27rem] lg:max-w-[36rem] aspect-square">
+            
+            {/* The background glow (automatically scales to fit the new size) */}
             <div className="absolute -inset-2 bg-gradient-to-r from-[#d9232e] to-red-900 rounded-2xl blur-3xl opacity-20 group-hover:opacity-60 transition duration-1000 group-hover:duration-500"></div>
             
-            {/* The new clean, borderless container */}
-            <div className="relative z-10 w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.6)] transition-transform duration-700 group-hover:scale-105">
+            {/* The Image Container */}
+            <div className="relative z-10 w-full h-full rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.6)] transition-transform duration-700 group-hover:scale-[1.03]">
               <img 
                 src={profile.imagePath} 
                 alt={profile.name} 
@@ -174,6 +176,7 @@ export default function App() {
                 className="w-full h-full object-cover grayscale opacity-90 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-out"
               />
             </div>
+            
           </div>
         </div>
       </section>
