@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-// Added FaSun and FaMoon for the Light/Dark toggle
-import { FaInstagram, FaWhatsapp, FaEnvelope, FaFileDownload, FaSun, FaMoon } from 'react-icons/fa';
-import MatrixBackground from './MatrixBackground'; // Importing your new animation
+// 1. Added FaTiktok to the imports
+import { FaInstagram, FaWhatsapp, FaEnvelope, FaFileDownload, FaSun, FaMoon, FaTiktok } from 'react-icons/fa';
+import MatrixBackground from './MatrixBackground'; 
 
 // ==========================================================
 // 🎛️ MASTER CONTROL PANEL
@@ -13,11 +13,13 @@ const profile = {
   buttonText: "Got a project?",
   resumeText: "My Resume",
   resumeLink: "/ashilaka-resume.pdf", 
-  imagePath: "/profile.jpg", 
+  imagePath: "/3d-profile.jpg", 
   email: "ashilakaedwin@gmail.com",
   phone: "+254 769 058 951",
   whatsapp: "254769058951", 
-  instagram: "YOUR_HANDLE" 
+  instagram: "netash_254",
+  // 2. Add your TikTok handle here (without the @ symbol)
+  tiktok: "ashilakaeddy054" 
 };
 
 const projects = [
@@ -61,9 +63,6 @@ const experience = [
 
 export default function App() {
   const [buttonText, setButtonText] = useState("Send a message");
-  
-  // --- THEME STATE ---
-  // Defaults to true (Dark Mode)
   const [isDarkMode, setIsDarkMode] = useState(true); 
 
   const handleSubmit = async (event) => {
@@ -88,14 +87,11 @@ export default function App() {
   };
 
   return (
-    // The main wrapper now dynamically switches text colors based on the theme
     <div className={`min-h-screen font-sans pb-24 selection:bg-[#d9232e] selection:text-white scroll-smooth transition-colors duration-500 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
       
-      {/* 0. MATRIX BACKGROUND */}
       <MatrixBackground isDarkMode={isDarkMode} />
 
       {/* 1. NAVIGATION */}
-      {/* Background is now highly transparent with a blur so the Matrix shows through */}
       <nav className={`fixed top-0 w-full z-50 backdrop-blur-md border-b transition-colors duration-500 ${isDarkMode ? 'bg-[#0a0f16]/60 border-gray-800/50' : 'bg-white/60 border-gray-200'}`}>
         <div className="flex justify-between items-center py-5 px-8 lg:px-24">
           <div className="text-xl font-bold tracking-wider uppercase">{profile.name}</div>
@@ -106,7 +102,6 @@ export default function App() {
             <a href="#about" className="hover:text-[#d9232e] transition-colors">About</a>
             <a href="#contact" className="hover:text-[#d9232e] transition-colors">Contact</a>
             
-            {/* LIGHT/DARK MODE TOGGLE BUTTON */}
             <button 
               onClick={() => setIsDarkMode(!isDarkMode)}
               className="p-2 rounded-full hover:bg-gray-500/20 transition-all duration-300"
@@ -135,7 +130,6 @@ export default function App() {
             {profile.bio}
           </p>
           
-          {/* Action Buttons & Social Links */}
           <div className="flex flex-wrap items-center gap-6 pt-6">
             <a href="#contact" className="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden font-bold text-white bg-[#d9232e] rounded group shadow-[0_0_15px_rgba(217,35,46,0.3)]">
               <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
@@ -149,13 +143,17 @@ export default function App() {
 
             {/* Icon Row */}
             <div className={`flex items-center gap-4 border-l pl-4 h-10 ${isDarkMode ? 'border-gray-800 text-gray-500' : 'border-gray-300 text-gray-600'}`}>
-              <a href={`https://wa.me/${profile.whatsapp}`} target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition-colors">
+              <a href={`https://wa.me/${profile.whatsapp}`} target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition-colors" aria-label="WhatsApp">
                 <FaWhatsapp size={26} />
               </a>
-              <a href={`https://instagram.com/${profile.instagram}`} target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors">
+              <a href={`https://instagram.com/${profile.instagram}`} target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors" aria-label="Instagram">
                 <FaInstagram size={26} />
               </a>
-              <a href="#contact" className="hover:text-[#d9232e] transition-colors">
+              {/* 3. TikTok Icon Added Here */}
+              <a href={`https://tiktok.com/@${profile.tiktok}`} target="_blank" rel="noopener noreferrer" className={`transition-colors ${isDarkMode ? 'hover:text-white' : 'hover:text-black'}`} aria-label="TikTok">
+                <FaTiktok size={26} />
+              </a>
+              <a href="#contact" className="hover:text-[#d9232e] transition-colors" aria-label="Contact">
                 <FaEnvelope size={26} />
               </a>
             </div>
