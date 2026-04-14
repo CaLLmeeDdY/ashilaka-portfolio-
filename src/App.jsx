@@ -13,7 +13,7 @@ const profile = {
   buttonText: "Got a project?",
   resumeText: "My Resume",
   resumeLink: "/ashilaka-resume.pdf", 
-  imagePath: "/3d-profile.jpg", 
+  imagePath: "/avatar-clean.jpg", 
   email: "ashilakaedwin@gmail.com",
   phone: "+254 769 058 951",
   whatsapp: "254769058951", 
@@ -162,16 +162,17 @@ export default function App() {
 
         <div className="flex justify-center lg:justify-end relative mt-12 lg:mt-0">
           <div className="relative group cursor-pointer">
-            <div className="absolute -inset-2 bg-gradient-to-r from-[#d9232e] to-red-900 rounded-full blur-3xl opacity-20 group-hover:opacity-60 transition duration-1000 group-hover:duration-500"></div>
-            <div className={`w-72 h-72 md:w-96 md:h-96 rounded-full p-1 relative transition-all duration-700 shadow-[0_0_40px_rgba(0,0,0,0.8)] ${isDarkMode ? 'bg-gradient-to-br from-gray-800 via-gray-900 to-black' : 'bg-gradient-to-br from-gray-300 via-gray-200 to-gray-100'}`}>
-              <div className={`w-full h-full rounded-full overflow-hidden relative z-10 border-4 ${isDarkMode ? 'border-[#0a0f16] bg-[#0a0f16]' : 'border-white bg-white'}`}>
-                <img 
-                  src={profile.imagePath} 
-                  alt={profile.name} 
-                  onError={(e) => { e.target.style.display = 'none'; }}
-                  className="w-full h-full object-cover grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-700 ease-out"
-                />
-              </div>
+            {/* The background glow (kept this to make it pop against the Matrix) */}
+            <div className="absolute -inset-2 bg-gradient-to-r from-[#d9232e] to-red-900 rounded-2xl blur-3xl opacity-20 group-hover:opacity-60 transition duration-1000 group-hover:duration-500"></div>
+            
+            {/* The new clean, borderless container */}
+            <div className="relative z-10 w-72 h-72 md:w-96 md:h-96 rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.6)] transition-transform duration-700 group-hover:scale-105">
+              <img 
+                src={profile.imagePath} 
+                alt={profile.name} 
+                onError={(e) => { e.target.style.display = 'none'; }}
+                className="w-full h-full object-cover grayscale opacity-90 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-out"
+              />
             </div>
           </div>
         </div>
