@@ -16,7 +16,7 @@ const profile = {
   email: "ashilakaedwin@gmail.com",
   phone: "+254 769 058 951",
   whatsapp: "254769058951", // Removed the + and spaces for the API link
-  instagram: "YOUR_HANDLE" // Add your Instagram handle here
+  instagram:"netash_254" // Add your Instagram handle here
 };
 
 const projects = [
