@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaInstagram, FaWhatsapp, FaEnvelope, FaFileDownload } from 'react-icons/fa';
 
 // ==========================================================
 // 🎛️ MASTER CONTROL PANEL
@@ -10,10 +11,12 @@ const profile = {
   bio: "Specializing in scalable web applications, Data Science, and Cloud Infrastructure. Delivering technical mastery across modern frameworks and automated deployments.",
   buttonText: "Got a project?",
   resumeText: "My Resume",
-  resumeLink: "#", // Add your PDF link here later
-  imagePath: "/profile.jpg", // Put this image in the 'public' folder
+  resumeLink: "/ashilaka-resume.pdf", // Make sure this file is in your 'public' folder
+  imagePath: "/profile.jpg", // Make sure this file is in your 'public' folder
   email: "ashilakaedwin@gmail.com",
-  phone: "+254 769 058 951"
+  phone: "+254 769 058 951",
+  whatsapp: "254769058951", // Removed the + and spaces for the API link
+  instagram: "YOUR_HANDLE" // Add your Instagram handle here
 };
 
 const projects = [
@@ -65,7 +68,7 @@ function App() {
     
     const formData = new FormData(event.target);
     
-    // ⚠️ IMPORTANT: PASTE YOUR WEB3FORMS KEY BELOW ⚠️
+    // Web3Forms Key Provided
     formData.append("access_key", "58d4ea45-916e-455f-81ba-d8eb3c803bb9");
 
     try {
@@ -121,14 +124,31 @@ function App() {
           <p className="text-gray-400 max-w-xl leading-relaxed text-lg">
             {profile.bio}
           </p>
-          <div className="flex flex-wrap gap-4 pt-6">
-            <a href="#contact" className="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden font-bold text-white bg-[#d9232e] rounded group">
+          
+          {/* Action Buttons & Social Links */}
+          <div className="flex flex-wrap items-center gap-6 pt-6">
+            <a href="#contact" className="relative inline-flex items-center justify-center px-8 py-3 overflow-hidden font-bold text-white bg-[#d9232e] rounded group shadow-[0_0_15px_rgba(217,35,46,0.3)]">
               <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
               <span className="relative">{profile.buttonText}</span>
             </a>
-            <a href={profile.resumeLink} className="border border-gray-700 text-gray-300 hover:text-white hover:border-[#d9232e] hover:bg-[#d9232e]/5 px-8 py-3 rounded font-bold transition-all duration-300 flex items-center">
+            
+            <a href={profile.resumeLink} download className="border border-gray-700 text-gray-300 hover:text-white hover:border-[#d9232e] hover:bg-[#d9232e]/5 px-6 py-3 rounded font-bold transition-all duration-300 flex items-center gap-2">
+              <FaFileDownload size={18} />
               {profile.resumeText}
             </a>
+
+            {/* Icon Row */}
+            <div className="flex items-center gap-4 border-l border-gray-800 pl-4 h-10">
+              <a href={`https://wa.me/${profile.whatsapp}`} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-green-500 transition-colors" aria-label="WhatsApp">
+                <FaWhatsapp size={26} />
+              </a>
+              <a href={`https://instagram.com/${profile.instagram}`} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-pink-500 transition-colors" aria-label="Instagram">
+                <FaInstagram size={26} />
+              </a>
+              <a href="#contact" className="text-gray-500 hover:text-[#d9232e] transition-colors" aria-label="Contact">
+                <FaEnvelope size={26} />
+              </a>
+            </div>
           </div>
         </div>
 
@@ -191,7 +211,7 @@ function App() {
             <p className="text-gray-400 leading-relaxed mb-8 text-lg">
               I am a Full Stack Developer and Computer Scientist with a deep passion for building scalable applications and managing robust cloud infrastructure. Over the past few years, I've had the opportunity to solve real-world technical challenges across varied environments.
             </p>
-            <a href={profile.resumeLink} className="inline-block bg-transparent border border-[#d9232e] text-[#d9232e] hover:bg-[#d9232e] hover:text-white px-8 py-3 rounded font-bold transition-all hover:shadow-[0_0_15px_rgba(217,35,46,0.3)]">
+            <a href={profile.resumeLink} download className="inline-block bg-transparent border border-[#d9232e] text-[#d9232e] hover:bg-[#d9232e] hover:text-white px-8 py-3 rounded font-bold transition-all hover:shadow-[0_0_15px_rgba(217,35,46,0.3)]">
               Download Detailed CV
             </a>
           </div>
