@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-// 1. Added FaTiktok to the imports
+import React, { useState, useEffect } from 'react';
 import { FaInstagram, FaWhatsapp, FaEnvelope, FaFileDownload, FaSun, FaMoon, FaTiktok } from 'react-icons/fa';
 import MatrixBackground from './MatrixBackground'; 
 
@@ -9,7 +8,7 @@ import MatrixBackground from './MatrixBackground';
 const profile = {
   name: "NETASH.KE",
   role: "FULL PACK NETWORK TECHNICIAN AND DEVELOPER",
-  bio: "Specializing in scalable web applications, Data Science, and Cloud Infrastructure. Delivering technical mastery across modern frameworks and automated deployments.",
+  bio: "I build, deploy, and maintain custom web applications and ERP systems using Python and Laravel. Unlike developers who only focus on the code, my background in ISP infrastructure and Ubuntu server administration means I ensure your project is securely hosted, optimized, and maintained from the ground up.",
   buttonText: "Got a project?",
   resumeText: "My Resume",
   resumeLink: "/ashilaka-resume.pdf", 
@@ -18,7 +17,6 @@ const profile = {
   phone: "+254 769 058 951",
   whatsapp: "254769058951", 
   instagram: "netash_254",
-  // 2. Add your TikTok handle here (without the @ symbol)
   tiktok: "ashilakaeddy054" 
 };
 
@@ -60,6 +58,33 @@ const experience = [
     description: "Applied machine learning models to solve complex datasets, focusing on high-accuracy predictive analytics and health classification."
   }
 ];
+
+// ==========================================================
+// ⌨️ TYPEWRITER ANIMATION COMPONENT
+// ==========================================================
+const Typewriter = ({ text, speed = 60 }) => {
+  const [displayedText, setDisplayedText] = useState('');
+
+  useEffect(() => {
+    let i = 0;
+    const intervalId = setInterval(() => {
+      setDisplayedText(text.slice(0, i + 1));
+      i++;
+      if (i >= text.length) {
+        clearInterval(intervalId);
+      }
+    }, speed);
+
+    return () => clearInterval(intervalId);
+  }, [text, speed]);
+
+  return (
+    <span>
+      {displayedText}
+      <span className="animate-pulse text-[#d9232e] ml-1">|</span>
+    </span>
+  );
+};
 
 export default function App() {
   const [buttonText, setButtonText] = useState("Send a message");
@@ -120,9 +145,13 @@ export default function App() {
             <span className="w-2 h-2 rounded-full bg-[#d9232e] animate-pulse"></span>
             System Online
           </p>
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tight">
-            I build digital <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-gray-300 to-[#d9232e]">masterpieces.</span>
+          
+          {/* NEW TYPEWRITER TEXT */}
+          {/* Added min-height so the layout doesn't jump as lines wrap during typing */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight min-h-[140px] md:min-h-[160px]">
+            <Typewriter text="Hey, it's your friendly neighborhood Technician, Ashilaka Edwin, 😄" />
           </h1>
+
           <h2 className={`text-2xl md:text-3xl font-semibold border-l-2 border-[#d9232e] pl-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
             {profile.role}
           </h2>
@@ -149,7 +178,6 @@ export default function App() {
               <a href={`https://instagram.com/${profile.instagram}`} target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors" aria-label="Instagram">
                 <FaInstagram size={26} />
               </a>
-              {/* 3. TikTok Icon Added Here */}
               <a href={`https://tiktok.com/@${profile.tiktok}`} target="_blank" rel="noopener noreferrer" className={`transition-colors ${isDarkMode ? 'hover:text-white' : 'hover:text-black'}`} aria-label="TikTok">
                 <FaTiktok size={26} />
               </a>
@@ -164,7 +192,7 @@ export default function App() {
           {/* 150% Larger Parent Container */}
           <div className="relative group cursor-pointer w-full max-w-[27rem] lg:max-w-[36rem] aspect-square">
             
-            {/* The background glow (automatically scales to fit the new size) */}
+            {/* The background glow */}
             <div className="absolute -inset-2 bg-gradient-to-r from-[#d9232e] to-red-900 rounded-2xl blur-3xl opacity-20 group-hover:opacity-60 transition duration-1000 group-hover:duration-500"></div>
             
             {/* The Image Container */}
