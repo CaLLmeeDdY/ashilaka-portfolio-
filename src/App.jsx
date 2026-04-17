@@ -9,7 +9,7 @@ import MatrixBackground from './MatrixBackground';
 const profile = {
   name: "NETASH.KE",
   role: "FULL STACK NETWORK TECHNICIAN AND DEVELOPER",
-  bio: "Specializing in scalable web applications, Data Science, and Cloud Infrastructure. Delivering technical mastery across modern frameworks and automated deployments.",
+  bio: "I build and manage network systems with a focus on reliability, control, and scalability. From MikroTik configurations to custom admin tools, I’m driven by the need to understand how systems work at a deeper level—and improve them. My goal is to evolve into a network developer who doesn’t just maintain systems, but designs better ones.",
   buttonText: "Got a project?",
   resumeText: "My Resume",
   resumeLink: "/ashilaka-resume.pdf", 
