@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FaInstagram, FaWhatsapp, FaEnvelope, FaFileDownload, FaSun, FaMoon, FaTiktok } from 'react-icons/fa';
+// Added FaGithub and FaExternalLinkAlt for the Projects section
+import { FaInstagram, FaWhatsapp, FaEnvelope, FaFileDownload, FaSun, FaMoon, FaTiktok, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import MatrixBackground from './MatrixBackground'; 
 
 // ==========================================================
@@ -7,8 +8,8 @@ import MatrixBackground from './MatrixBackground';
 // ==========================================================
 const profile = {
   name: "NETASH.KE",
-  role: "FULL STACK NETWORK TECHNICIAN AND DEVELOPER",
-  bio: "I build, deploy, and maintain custom web applications and ERP systems using Python and Laravel. Unlike developers who only focus on the code, my background in ISP infrastructure and Ubuntu server administration means I ensure your project is securely hosted, optimized, and maintained from the ground up.",
+  role: "FULL PACK NETWORK TECHNICIAN AND DEVELOPER",
+  bio: "Specializing in scalable web applications, Data Science, and Cloud Infrastructure. Delivering technical mastery across modern frameworks and automated deployments.",
   buttonText: "Got a project?",
   resumeText: "My Resume",
   resumeLink: "/ashilaka-resume.pdf", 
@@ -24,23 +25,26 @@ const projects = [
   {
     title: "TIA Clinic Showcase",
     image: "/project1.jpg", 
-    tags: ["React", "Tailwind"],
-    description: "An interactive web platform demonstrating modern frontend development practices. Built with lightning-fast architecture.",
-    link: "#"
+    tags: ["React", "Tailwind", "Vite"],
+    description: "An interactive web platform demonstrating modern frontend development practices. Built with lightning-fast architecture and responsive design.",
+    githubLink: "#", // Add your Github link here
+    liveLink: "#"    // Add your Live website link here
   },
   {
     title: "WhatsApp Automation",
     image: "/project2.jpg", 
-    tags: ["Python", "Django"],
+    tags: ["Python", "Django", "API"],
     description: "A comprehensive lead automation platform designed to integrate WhatsApp messaging capabilities with complex sales workflows.",
-    link: "#"
+    githubLink: "#",
+    liveLink: "#"
   },
   {
     title: "DataBasedIndex",
     image: "/project3.jpg", 
-    tags: ["Django", "Celery"],
+    tags: ["Django", "Celery", "AI"],
     description: "A sophisticated AI-powered SEO content generation and static site deployment tool designed to streamline web creation.",
-    link: "#"
+    githubLink: "#",
+    liveLink: "#"
   }
 ];
 
@@ -146,8 +150,6 @@ export default function App() {
             System Online
           </p>
           
-          {/* NEW TYPEWRITER TEXT */}
-          {/* Added min-height so the layout doesn't jump as lines wrap during typing */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight min-h-[140px] md:min-h-[160px]">
             <Typewriter text="Hey, it's your friendly neighborhood Technician, Ashilaka Edwin, 😄" />
           </h1>
@@ -189,13 +191,8 @@ export default function App() {
         </div>
 
         <div className="flex justify-center lg:justify-end relative mt-12 lg:mt-0 w-full">
-          {/* 150% Larger Parent Container */}
           <div className="relative group cursor-pointer w-full max-w-[27rem] lg:max-w-[36rem] aspect-square">
-            
-            {/* The background glow */}
             <div className="absolute -inset-2 bg-gradient-to-r from-[#d9232e] to-red-900 rounded-2xl blur-3xl opacity-20 group-hover:opacity-60 transition duration-1000 group-hover:duration-500"></div>
-            
-            {/* The Image Container */}
             <div className="relative z-10 w-full h-full rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.6)] transition-transform duration-700 group-hover:scale-[1.03]">
               <img 
                 src={profile.imagePath} 
@@ -204,45 +201,76 @@ export default function App() {
                 className="w-full h-full object-cover grayscale opacity-90 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 ease-out"
               />
             </div>
-            
           </div>
         </div>
       </section>
 
-      {/* 3. PROJECTS SECTION */}
-      <section id="projects" className={`px-8 lg:px-24 py-32 border-y backdrop-blur-md transition-colors duration-500 ${isDarkMode ? 'bg-[#0d131b]/80 border-gray-800/50' : 'bg-white/80 border-gray-200'}`}>
-        <h2 className="text-4xl font-bold text-center mb-16">Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div key={index} className={`border rounded-xl overflow-hidden group transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl flex flex-col ${isDarkMode ? 'bg-[#111822]/90 border-gray-800 hover:border-gray-500 hover:shadow-red-900/10' : 'bg-white border-gray-200 hover:border-gray-400 hover:shadow-red-900/10'}`}>
-              <div className={`h-48 flex items-center justify-center relative overflow-hidden ${isDarkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
-                <div className="absolute inset-0 bg-[#d9232e]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  onError={(e) => { e.target.style.display = 'none'; }}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                />
-              </div>
-              <div className="p-8 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold mb-3 group-hover:text-[#d9232e] transition-colors">{project.title}</h3>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, tagIdx) => (
-                    <span key={tagIdx} className={`px-2 py-1 border text-xs rounded ${isDarkMode ? 'bg-[#0a0f16] border-gray-700 text-gray-300' : 'bg-gray-100 border-gray-300 text-gray-700'}`}>{tag}</span>
-                  ))}
+      {/* 3. PROJECTS SECTION - UPGRADED UI */}
+      <section id="projects" className={`px-8 lg:px-24 py-32 border-y backdrop-blur-md transition-colors duration-500 ${isDarkMode ? 'bg-[#0d131b]/80 border-gray-800/50' : 'bg-gray-50/80 border-gray-200'}`}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4">Featured Projects</h2>
+            <p className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>A selection of my recent work and technical experiments.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <div key={index} className={`relative group border rounded-xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl flex flex-col ${isDarkMode ? 'bg-[#111822]/90 border-gray-800 hover:border-[#d9232e]/50 hover:shadow-[#d9232e]/10' : 'bg-white border-gray-200 hover:border-[#d9232e]/50 hover:shadow-[#d9232e]/10'}`}>
+                
+                {/* Image Container with Fallback Gradient */}
+                <div className={`h-56 relative overflow-hidden flex items-center justify-center ${isDarkMode ? 'bg-gradient-to-br from-gray-800 to-gray-900' : 'bg-gradient-to-br from-gray-200 to-gray-300'}`}>
+                  <div className="absolute inset-0 bg-[#d9232e]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    onError={(e) => { e.target.style.opacity = 0; }} // Hides broken image icon to show gradient fallback
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out" 
+                  />
+                  {/* Floating Tech Badges */}
+                  <div className="absolute bottom-4 left-4 z-20 flex flex-wrap gap-2">
+                    {project.tags.map((tag, tagIdx) => (
+                      <span key={tagIdx} className={`px-3 py-1 text-xs font-bold rounded-full shadow-lg backdrop-blur-md ${isDarkMode ? 'bg-black/60 text-white border border-gray-700' : 'bg-white/80 text-black border border-gray-200'}`}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <p className={`text-sm mb-8 line-clamp-3 flex-grow ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>{project.description}</p>
-                <a href={project.link} className="block text-center w-full py-3 border border-[#d9232e] text-[#d9232e] hover:bg-[#d9232e] hover:text-white rounded transition-all font-bold tracking-wide mt-auto">
-                  Read Case Study &rarr;
-                </a>
+
+                {/* Content Container */}
+                <div className="p-8 flex flex-col flex-grow">
+                  <h3 className="text-2xl font-bold mb-3 group-hover:text-[#d9232e] transition-colors">{project.title}</h3>
+                  <p className={`text-sm mb-8 leading-relaxed flex-grow ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    {project.description}
+                  </p>
+                  
+                  {/* Call to Action Buttons */}
+                  <div className={`flex items-center gap-4 pt-6 border-t ${isDarkMode ? 'border-gray-800' : 'border-gray-200'}`}>
+                    <a 
+                      href={project.liveLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#d9232e] hover:bg-red-700 text-white rounded-lg transition-all font-bold text-sm shadow-lg shadow-red-900/20"
+                    >
+                      <FaExternalLinkAlt /> Live Demo
+                    </a>
+                    <a 
+                      href={project.githubLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className={`flex-1 flex items-center justify-center gap-2 py-3 border rounded-lg transition-all font-bold text-sm ${isDarkMode ? 'border-gray-700 text-gray-300 hover:text-white hover:border-white hover:bg-gray-800' : 'border-gray-300 text-gray-700 hover:text-black hover:border-black hover:bg-gray-50'}`}
+                    >
+                      <FaGithub size={16} /> Code
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* 4. ABOUT & EXPERIENCE SECTION */}
-      <section id="about" className={`px-8 lg:px-24 py-24 border-y backdrop-blur-md transition-colors duration-500 ${isDarkMode ? 'bg-[#0a0f16]/80 border-gray-800/50' : 'bg-gray-50/80 border-gray-200'}`}>
+      <section id="about" className={`px-8 lg:px-24 py-24 border-y backdrop-blur-md transition-colors duration-500 ${isDarkMode ? 'bg-[#0a0f16]/80 border-gray-800/50' : 'bg-white/80 border-gray-200'}`}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div className="p-8 rounded-2xl backdrop-blur-sm bg-black/5">
             <h2 className="text-4xl font-bold mb-8">About Me</h2>
@@ -268,7 +296,7 @@ export default function App() {
       </section>
 
       {/* 5. CONTACT SECTION */}
-      <section id="contact" className={`px-8 lg:px-24 py-32 backdrop-blur-md transition-colors duration-500 ${isDarkMode ? 'bg-[#0d131b]/80' : 'bg-white/80'}`}>
+      <section id="contact" className={`px-8 lg:px-24 py-32 backdrop-blur-md transition-colors duration-500 ${isDarkMode ? 'bg-[#0d131b]/80' : 'bg-gray-50/80'}`}>
         <div className={`max-w-5xl mx-auto border rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-[#111822]/90 border-gray-800' : 'bg-white border-gray-200'}`}>
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#d9232e]/5 rounded-full blur-3xl pointer-events-none"></div>
 
