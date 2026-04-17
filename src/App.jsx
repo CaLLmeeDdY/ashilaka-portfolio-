@@ -8,7 +8,7 @@ import MatrixBackground from './MatrixBackground';
 // ==========================================================
 const profile = {
   name: "NETASH.KE",
-  role: "FULL PACK NETWORK TECHNICIAN AND DEVELOPER",
+  role: "FULL STACK NETWORK TECHNICIAN AND DEVELOPER",
   bio: "Specializing in scalable web applications, Data Science, and Cloud Infrastructure. Delivering technical mastery across modern frameworks and automated deployments.",
   buttonText: "Got a project?",
   resumeText: "My Resume",
