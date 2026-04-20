@@ -7,3 +7,32 @@ body {
   color: white;
   margin: 0;
 }
+.neon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background-color: #090c10;
+  color: #00e5ff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  border: 2px solid #00e5ff;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.neon-btn:hover {
+  background-color: #00e5ff;
+  color: #090c10;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.6), 0 0 40px rgba(0, 229, 255, 0.4);
+}
+
+.neon-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
