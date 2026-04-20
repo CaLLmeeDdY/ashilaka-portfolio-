@@ -22,6 +22,15 @@ const profile = {
 
 const projects = [
   {
+    title: "NETASH_OS v3.8.0",
+    image: "/netash-bg.jpg", // Replace with one of the screenshots you took
+    tags: ["Flutter", "Dart", "Android"],
+    description: "A tactical, offline-first network diagnostic suite for Android. Features live ICMP jitter tracking, ARP subnet scanning, inline Telnet console, and 802.11 airspace monitoring.",
+    apkLink: "/Netash_OS_v3.8.0.apk", // This triggers the custom download button
+    githubLink: "#",
+    liveLink: "#"
+  },
+  {
     title: "TIA Clinic Showcase",
     image: "/project1.jpg", 
     tags: ["React", "Tailwind", "Vite"],
@@ -151,7 +160,6 @@ export default function App() {
           <div className="text-xl font-bold tracking-wider uppercase text-[#00d2ff]">{profile.name}</div>
           
           <div className="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase">
-            {/* The links now read the 'activeSection' state to glow when you are looking at them */}
             {['home', 'projects', 'about', 'contact'].map((tab) => (
               <a 
                 key={tab}
@@ -159,7 +167,6 @@ export default function App() {
                 className={`relative py-1 transition-all duration-300 ${activeSection === tab ? 'text-[#00d2ff] scale-110' : 'hover:text-[#00d2ff]'}`}
               >
                 {tab}
-                {/* A tiny animated dot that appears under the active tab */}
                 <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#00d2ff] transition-all duration-300 ${activeSection === tab ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`}></span>
               </a>
             ))}
@@ -273,23 +280,38 @@ export default function App() {
                     {project.description}
                   </p>
                   
+                  {/* DYNAMIC BUTTON RENDERER */}
                   <div className={`flex items-center gap-4 pt-6 border-t ${isDarkMode ? 'border-gray-800' : 'border-gray-200'}`}>
-                    <a 
-                      href={project.liveLink} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#00d2ff] hover:bg-[#0099cc] text-[#0a0f16] rounded-lg transition-all font-bold text-sm shadow-lg shadow-blue-900/20"
-                    >
-                      <FaExternalLinkAlt /> Live Demo
-                    </a>
-                    <a 
-                      href={project.githubLink} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className={`flex-1 flex items-center justify-center gap-2 py-3 border rounded-lg transition-all font-bold text-sm ${isDarkMode ? 'border-gray-700 text-gray-300 hover:text-[#00d2ff] hover:border-[#00d2ff] hover:bg-[#00d2ff]/10' : 'border-gray-300 text-gray-700 hover:text-[#00d2ff] hover:border-[#00d2ff] hover:bg-blue-50'}`}
-                    >
-                      <FaGithub size={16} /> Code
-                    </a>
+                    {project.apkLink ? (
+                      // INJECTED NETASH_OS BUTTON
+                      <a 
+                        href={project.apkLink} 
+                        download="Netash_OS_v3.8.0.apk" 
+                        className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg transition-all font-bold text-sm shadow-[0_0_10px_rgba(0,229,255,0.2)] hover:shadow-[0_0_20px_rgba(0,229,255,0.6)] ${isDarkMode ? 'bg-[#090C10] text-[#00E5FF] border border-[#00E5FF] hover:bg-[#00E5FF] hover:text-[#090C10]' : 'bg-white text-blue-600 border border-blue-500 hover:bg-blue-600 hover:text-white'}`}
+                      >
+                        <FaFileDownload size={16} /> DOWNLOAD APK [50MB]
+                      </a>
+                    ) : (
+                      // STANDARD PORTFOLIO BUTTONS
+                      <>
+                        <a 
+                          href={project.liveLink} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#00d2ff] hover:bg-[#0099cc] text-[#0a0f16] rounded-lg transition-all font-bold text-sm shadow-lg shadow-blue-900/20"
+                        >
+                          <FaExternalLinkAlt /> Live Demo
+                        </a>
+                        <a 
+                          href={project.githubLink} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className={`flex-1 flex items-center justify-center gap-2 py-3 border rounded-lg transition-all font-bold text-sm ${isDarkMode ? 'border-gray-700 text-gray-300 hover:text-[#00d2ff] hover:border-[#00d2ff] hover:bg-[#00d2ff]/10' : 'border-gray-300 text-gray-700 hover:text-[#00d2ff] hover:border-[#00d2ff] hover:bg-blue-50'}`}
+                        >
+                          <FaGithub size={16} /> Code
+                        </a>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
